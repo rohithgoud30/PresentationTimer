@@ -78,12 +78,12 @@ const Timer = () => {
       }
     }
 
-    // Reset states after 10 seconds
+    // Reset states after 5seconds
     messageTimeoutRef.current = setTimeout(() => {
       setShowMessage(false)
       setMessage('')
       setBackgroundWhite(false)
-    }, 10000)
+    }, 5000)
   }
 
   // Start/resume timer
@@ -141,7 +141,7 @@ const Timer = () => {
       {!showMessage && (
         <button
           onClick={toggleMute}
-          className='absolute top-6 right-6 transition-all hover:scale-110'
+          className='absolute transition-all top-6 right-6 hover:scale-110'
         >
           {isMuted ? (
             <FaVolumeMute size={40} className='text-red-600' />
@@ -177,7 +177,7 @@ const Timer = () => {
               repeat: 5,
               repeatType: 'reverse',
             }}
-            className='text-6xl sm:text-8xl font-extrabold text-red-600 text-center'
+            className='text-6xl font-extrabold text-center text-red-600 sm:text-8xl'
           >
             {message}
           </motion.div>
@@ -191,7 +191,7 @@ const Timer = () => {
             className='flex flex-col items-center'
           >
             {/* Timer display */}
-            <h2 className='text-7xl sm:text-8xl md:text-9xl font-mono mb-8'>
+            <h2 className='mb-8 font-mono text-7xl sm:text-8xl md:text-9xl'>
               {formatTime(timeLeft)}
             </h2>
 
@@ -200,7 +200,7 @@ const Timer = () => {
               {!isRunning && !isPaused && (
                 <button
                   onClick={startTimer}
-                  className='p-4 bg-green-600 rounded-full hover:bg-green-700 transition'
+                  className='p-4 transition bg-green-600 rounded-full hover:bg-green-700'
                 >
                   <FaPlay size={32} />
                 </button>
@@ -208,7 +208,7 @@ const Timer = () => {
               {isRunning && (
                 <button
                   onClick={pauseTimer}
-                  className='p-4 bg-yellow-500 rounded-full hover:bg-yellow-600 transition'
+                  className='p-4 transition bg-yellow-500 rounded-full hover:bg-yellow-600'
                 >
                   <FaPause size={32} />
                 </button>
@@ -216,14 +216,14 @@ const Timer = () => {
               {isPaused && (
                 <button
                   onClick={startTimer}
-                  className='p-4 bg-blue-500 rounded-full hover:bg-blue-600 transition'
+                  className='p-4 transition bg-blue-500 rounded-full hover:bg-blue-600'
                 >
                   <FaPlayCircle size={32} />
                 </button>
               )}
               <button
                 onClick={resetTimer}
-                className='p-4 bg-red-600 rounded-full hover:bg-red-700 transition'
+                className='p-4 transition bg-red-600 rounded-full hover:bg-red-700'
               >
                 <FaRedo size={32} />
               </button>
