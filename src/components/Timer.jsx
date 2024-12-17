@@ -11,7 +11,7 @@ import {
 
 const Timer = () => {
   // State management
-  const [timeLeft, setTimeLeft] = useState(8 * 60) // Initial time in seconds
+  const [timeLeft, setTimeLeft] = useState(5) // Initial time in seconds
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
@@ -27,12 +27,14 @@ const Timer = () => {
   const audio5 = useRef(new Audio('./5_min_alert.mp3'))
   const audio3 = useRef(new Audio('./3_min_alert.mp3'))
   const audio1 = useRef(new Audio('./1_min_alert.mp3'))
+  const timesUpAudio = useRef(new Audio('./times_up.mp3')) // Final alert sound
 
   // Initialize audio mute state
   useEffect(() => {
     audio5.current.muted = isMuted
     audio3.current.muted = isMuted
     audio1.current.muted = isMuted
+    timesUpAudio.current.muted = isMuted
   }, [isMuted])
 
   // Preload audio on user interaction
@@ -40,6 +42,7 @@ const Timer = () => {
     audio5.current.load()
     audio3.current.load()
     audio1.current.load()
+    timesUpAudio.current.load()
   }
 
   // Toggle mute state
@@ -48,6 +51,7 @@ const Timer = () => {
     audio5.current.muted = !isMuted
     audio3.current.muted = !isMuted
     audio1.current.muted = !isMuted
+    timesUpAudio.current.muted = !isMuted
   }
 
   // Format time into MM:SS
@@ -114,7 +118,7 @@ const Timer = () => {
         if (nextTime <= 0) {
           clearInterval(timerRef.current)
           setIsRunning(false)
-          triggerCheckpoint("TIME'S UP!", audio1)
+          triggerCheckpoint("TIME'S UP!", timesUpAudio) // Final alert
           return 0
         }
         return nextTime
