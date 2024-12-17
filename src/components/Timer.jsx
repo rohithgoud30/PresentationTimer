@@ -24,9 +24,9 @@ const Timer = () => {
   const messageTimeoutRef = useRef(null)
 
   // Audio refs for alerts
-  const audio5 = useRef(new Audio('/5_min_alert.mp3'))
-  const audio3 = useRef(new Audio('/3_min_alert.mp3'))
-  const audio1 = useRef(new Audio('/1_min_alert.mp3'))
+  const audio5 = useRef(new Audio('./5_min_alert.mp3'))
+  const audio3 = useRef(new Audio('./3_min_alert.mp3'))
+  const audio1 = useRef(new Audio('./1_min_alert.mp3'))
 
   // Initialize mute state when component mounts
   useEffect(() => {
