@@ -11,7 +11,7 @@ import {
 
 const Timer = () => {
   // State management
-  const [timeLeft, setTimeLeft] = useState(5 * 61) // Initial time in seconds
+  const [timeLeft, setTimeLeft] = useState(8 * 60) // Initial time in seconds
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
