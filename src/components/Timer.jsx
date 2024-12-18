@@ -11,7 +11,7 @@ import {
 
 const Timer = () => {
   // State management
-  const [timeLeft, setTimeLeft] = useState(8 * 60) // Initial time in seconds
+  const [timeLeft, setTimeLeft] = useState(5 * 61) // Initial time in seconds
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
@@ -171,9 +171,25 @@ const Timer = () => {
           <motion.div
             key='message'
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.5 }}
+            animate={{
+              opacity: [1, 1, 1],
+              scale: [1, 1.1, 1],
+              textShadow: [
+                '0 0 0px rgba(255,0,0,0)',
+                '0 0 20px rgba(255,0,0,0)',
+                '0 0 0px rgba(255,0,0,0)',
+              ],
+            }}
+            exit={{
+              opacity: 0,
+              scale: 0.8,
+              transition: { duration: 0.5 },
+            }}
+            transition={{
+              duration: 2,
+              repeat: 5,
+              repeatType: 'reverse',
+            }}
             className='text-6xl font-extrabold text-center text-red-600 sm:text-8xl'
           >
             {message}
