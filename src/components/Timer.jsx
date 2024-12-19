@@ -10,8 +10,11 @@ import {
 } from 'react-icons/fa'
 
 const Timer = () => {
+  // Determine the initial timer duration based on the URL path
+  const initialTime = window.location.pathname === '/test' ? 5 * 61 : 8 * 60
+
   // State management
-  const [timeLeft, setTimeLeft] = useState(5 * 61) // Initial time in seconds
+  const [timeLeft, setTimeLeft] = useState(initialTime)
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
