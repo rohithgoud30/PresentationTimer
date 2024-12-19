@@ -14,7 +14,8 @@ const Timer = () => {
   const location = useLocation() // Get current URL path
 
   // Dynamically set the initial timer duration based on the path
-  const initialTime = location.pathname === '/test' ? 5 * 61 : 8 * 60
+  const initialTime =
+    location.pathname === '/PresentationTimer/test' ? 5 * 61 : 8 * 60
 
   // State management
   const [timeLeft, setTimeLeft] = useState(initialTime) // Use dynamic initial time
@@ -143,7 +144,7 @@ const Timer = () => {
   const resetTimer = () => {
     clearInterval(timerRef.current)
     clearAllTimeouts()
-    setTimeLeft(8 * 60)
+    setTimeLeft(initialTime) // Reset to initial time based on URL
     setIsRunning(false)
     setIsPaused(false)
     setShowMessage(false)
