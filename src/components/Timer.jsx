@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 import {
   FaPlay,
   FaPause,
@@ -10,11 +11,13 @@ import {
 } from 'react-icons/fa'
 
 const Timer = () => {
-  // Determine the initial timer duration based on the URL path
-  const initialTime = window.location.pathname === '/test' ? 5 * 61 : 8 * 60
+  const location = useLocation() // Get current URL path
+
+  // Dynamically set the initial timer duration based on the path
+  const initialTime = location.pathname === '/test' ? 5 * 61 : 8 * 60
 
   // State management
-  const [timeLeft, setTimeLeft] = useState(initialTime)
+  const [timeLeft, setTimeLeft] = useState(initialTime) // Use dynamic initial time
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
