@@ -153,14 +153,16 @@ const Timer = () => {
   return (
     <div
       className={`flex flex-col items-center justify-center w-full min-h-screen px-4 transition-all duration-500 ${
-        backgroundWhite ? 'bg-white text-black' : 'bg-gray-900 text-white'
+        backgroundWhite
+          ? 'bg-white text-black'
+          : 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white'
       }`}
     >
       {/* Mute Toggle Button */}
       {!showMessage && (
         <button
           onClick={toggleMute}
-          className='absolute transition-all top-6 right-6 hover:scale-110'
+          className='absolute transition-all top-6 right-6 hover:scale-110 p-3 rounded-full bg-opacity-20 bg-white backdrop-blur-sm hover:bg-opacity-30'
         >
           {isMuted ? (
             <FaVolumeMute size={40} className='text-red-600' />
@@ -195,7 +197,7 @@ const Timer = () => {
               repeat: 5,
               repeatType: 'reverse',
             }}
-            className='text-6xl font-extrabold text-center text-red-600 sm:text-8xl'
+            className='text-6xl font-extrabold text-center text-red-600 sm:text-8xl drop-shadow-lg'
           >
             {message}
           </motion.div>
@@ -210,7 +212,7 @@ const Timer = () => {
           animate={{ opacity: 1 }}
           className='flex flex-col items-center'
         >
-          <h2 className='mb-8 font-mono text-7xl sm:text-8xl md:text-9xl'>
+          <h2 className='mb-8 font-mono text-7xl sm:text-8xl md:text-9xl tracking-wider drop-shadow-2xl bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300'>
             {formatTime(timeLeft)}
           </h2>
 
@@ -219,7 +221,7 @@ const Timer = () => {
             {!isRunning && !isPaused && (
               <button
                 onClick={startTimer}
-                className='p-4 transition bg-green-600 rounded-full hover:bg-green-700'
+                className='p-4 transition bg-gradient-to-br from-green-500 to-green-600 rounded-full hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-green-500/30 transform hover:-translate-y-1'
               >
                 <FaPlay size={32} />
               </button>
@@ -227,7 +229,7 @@ const Timer = () => {
             {isRunning && (
               <button
                 onClick={pauseTimer}
-                className='p-4 transition bg-yellow-500 rounded-full hover:bg-yellow-600'
+                className='p-4 transition bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full hover:from-yellow-500 hover:to-yellow-600 shadow-lg hover:shadow-yellow-500/30 transform hover:-translate-y-1'
               >
                 <FaPause size={32} />
               </button>
@@ -235,14 +237,14 @@ const Timer = () => {
             {isPaused && (
               <button
                 onClick={startTimer}
-                className='p-4 transition bg-blue-500 rounded-full hover:bg-blue-600'
+                className='p-4 transition bg-gradient-to-br from-blue-400 to-blue-500 rounded-full hover:from-blue-500 hover:to-blue-600 shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1'
               >
                 <FaPlayCircle size={32} />
               </button>
             )}
             <button
               onClick={resetTimer}
-              className='p-4 transition bg-red-600 rounded-full hover:bg-red-700'
+              className='p-4 transition bg-gradient-to-br from-red-500 to-red-600 rounded-full hover:from-red-600 hover:to-red-700 shadow-lg hover:shadow-red-500/30 transform hover:-translate-y-1'
             >
               <FaRedo size={32} />
             </button>
